@@ -1,0 +1,1 @@
+# Scala Akka Project for Weather retrieving based on city name
