@@ -1,0 +1,91 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.4.4 (Oracle Corporation Java 13.0.2)
+[debug]       Load.loadUnit: plugins took 134.0311ms
+[debug]       Load.loadUnit: defsScala took 0.3147ms
+[debug] [Loading] Scanning directory C:\Users\aldie\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\aldie\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 20.9595 ms
+[debug]           Load.resolveProject(global-plugins) took 42.9309ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\aldie\.sbt\1.0\plugins, plugins: List(<none>))) took 92.9838ms
+[debug] [Loading] Done in C:\Users\aldie\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 116.4601ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.4558ms
+[debug]     Load.loadUnit(file:/C:/Users/aldie/.sbt/1.0/plugins/, ...) took 268.3282ms
+[debug]   Load.apply: load took 469.7715ms
+[debug]   Load.apply: resolveProjects took 7.2887ms
+[debug]   Load.apply: finalTransforms took 81.1631ms
+[debug]   Load.apply: config.delegates took 10.8966ms
+[debug]   Load.apply: Def.make(settings)... took 1816.2614ms
+[debug]   Load.apply: structureIndex took 102.8284ms
+[debug]   Load.apply: mkStreams took 2.3588ms
+[info] loading global plugins from C:\Users\aldie\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 4385.6294ms
+[debug]           Load.loadUnit: plugins took 40.1737ms
+[debug]           Load.loadUnit: defsScala took 0.0036ms
+[debug] [Loading] Scanning directory C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.7616 ms
+[debug]               Load.resolveProject(weatherapi-build) took 1.5213ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id weatherapi-build, base: C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\project, plugins: List(<none>))) took 3.7741ms
+[debug] [Loading] Done in C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\project, returning: (weatherapi-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 6.2297ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.0145ms
+[debug]         Load.loadUnit(file:/C:/Users/aldie/Documents/ProjectsInteliJ/WeatherAPI/project/, ...) took 47.6928ms
+[debug]       Load.apply: load took 49.2854ms
+[debug]       Load.apply: resolveProjects took 0.1049ms
+[debug]       Load.apply: finalTransforms took 9.1244ms
+[debug]       Load.apply: config.delegates took 0.3848ms
+[debug]       Load.apply: Def.make(settings)... took 95.9591ms
+[debug]       Load.apply: structureIndex took 34.3803ms
+[debug]       Load.apply: mkStreams took 0.0021ms
+[info] loading project definition from C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 434.6491ms
+[debug]     Load.loadUnit: defsScala took 0.0029ms
+[debug] [Loading] Scanning directory C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI
+[debug]       Load.loadUnit: mkEval took 6.4124ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.5576 ms
+[info] loading settings for project weatherapi from build.sbt ...
+[debug]         Load.resolveProject(weatherapi) took 3.2055ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id weatherapi, base: C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI, plugins: List(<none>))) took 5.2699ms
+[debug] [Loading] Done in C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI, returning: (weatherapi)
+[debug]     Load.loadUnit: loadedProjectsRaw took 199.6309ms
+[debug]     Load.loadUnit: cleanEvalClasses took 38.3313ms
+[debug]   Load.loadUnit(file:/C:/Users/aldie/Documents/ProjectsInteliJ/WeatherAPI/, ...) took 674.034ms
+[debug] Load.apply: load took 677.1277ms
+[debug] Load.apply: resolveProjects took 0.2391ms
+[debug] Load.apply: finalTransforms took 8.8576ms
+[debug] Load.apply: config.delegates took 0.3013ms
+[debug] Load.apply: Def.make(settings)... took 150.8147ms
+[debug] Load.apply: structureIndex took 29.9961ms
+[debug] Load.apply: mkStreams took 0.0022ms
+[info] set current project to WeatherAPI (in build file:/C:/Users/aldie/Documents/ProjectsInteliJ/WeatherAPI/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(run, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 1 Scala source to C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\target\scala-2.13\classes ...
+[info] done compiling

@@ -1,0 +1,8 @@
+[debug] Created transactional ClassFileManager with tempDir = C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\target\scala-2.13\classes.bak
+[debug] About to delete class files:
+[debug] We backup class files:
+[debug] Registering generated classes:
+[debug] 	OpenMap$.class
+[debug] 	OpenMap.class
+[debug] 	OpenMap$delayedInit$body.class
+[debug] Removing the temporary directory used for backing up class files: C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\target\scala-2.13\classes.bak

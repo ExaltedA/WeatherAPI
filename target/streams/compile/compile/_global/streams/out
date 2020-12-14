@@ -1,0 +1,5 @@
+[warn] C:\Users\aldie\Documents\ProjectsInteliJ\WeatherAPI\src\main\scala\CityDirectives.scala:10:69: match may not be exhaustive.
+[warn] It would fail on the following input: Failure(_)
+[warn]   (e: Throwable => ApiError): Directive1[T] = onComplete(f) flatMap {
+[warn]                                                                     ^
+[warn] one warning found
