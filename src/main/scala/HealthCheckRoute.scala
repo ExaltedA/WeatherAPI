@@ -7,12 +7,12 @@ trait HealthCheckRoute {
     Directives.concat(
       path("hello") {
         get {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
+          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Hello dear dev, your server is up!</h1>"))
         }
       },
       path("ping") {
         get {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "pong"))
+          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>KABOOM</h1>"))
         }
       }
     )

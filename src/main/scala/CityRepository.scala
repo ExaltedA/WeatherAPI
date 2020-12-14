@@ -1,5 +1,3 @@
-import java.util.UUID
-
 import scala.concurrent.{ExecutionContext, Future}
 
 trait CityRepository {
@@ -10,16 +8,26 @@ trait CityRepository {
   def select(createCityData: CreateCityData): Future[CityData]
 }
 
+//, kafkaConsumer: ActorRef
+class InMemoryCityRepository(api: OpenMap)(implicit ex:ExecutionContext) extends CityRepository {
 
-class InMemoryCityRepository(city:Seq[CityData] = Seq.empty)(implicit ex:ExecutionContext) extends CityRepository {
-  private var cities: Vector[CityData] = city.toVector
+  final case class Response(vector: Vector[CityData])
+  private var cities: Vector[CityData] = Vector(
+    CityData( "Nur-Sultan", "+10"),
+    CityData( "Paris", "-5")
+  )
+  /*private def updateRepo():Future[Vector[CityData]] ={
 
-  override def all(): Future[Seq[CityData]] = Future.successful(cities)
+    Future.successful()
+  }*/
+  override def all(): Future[Seq[CityData]] ={
+    //ask for vector
+    Future.successful(cities)
+  }
 
 
   override def create(createCity: CreateCityData): Future[CityData] = Future.successful {
     val city = CityData(
-      id = UUID.randomUUID().toString,
       name = createCity.name,
       temperature = "5"  //createCity.address //TODO: temperature OPENMAP
     )
@@ -28,7 +36,7 @@ class InMemoryCityRepository(city:Seq[CityData] = Seq.empty)(implicit ex:Executi
   }
 
   override def put(createCity:CreateCityData): Future[CityData] = Future.successful {
-    var newCity = CityData("","","")
+    var newCity = CityData("","")
     for(city <- cities){
       if(city.name == createCity.name){
         newCity = city.copy(name = createCity.name, temperature = "")//TODO: OPENMAP
@@ -40,7 +48,7 @@ class InMemoryCityRepository(city:Seq[CityData] = Seq.empty)(implicit ex:Executi
   }
 
   override def delete(createData: CreateCityData) = Future.successful{
-    var newCity = CityData("","","")
+    var newCity = CityData("","")
     for(city <- cities){
       if(city.name == createData.name){
         cities = cities.filter(_ != city)
@@ -51,8 +59,8 @@ class InMemoryCityRepository(city:Seq[CityData] = Seq.empty)(implicit ex:Executi
   }
 
   override def select(createCity: CreateCityData): Future[CityData] = Future.successful{
-    var newCity = CityData("","","")
-
+    var newCity = CityData("","")
+    //Update
     for(city <- cities){
       if(city.name == createCity.name){
         newCity = city.copy(name = createCity.name, temperature = city.temperature)//TODO: OPENMAP
@@ -60,7 +68,8 @@ class InMemoryCityRepository(city:Seq[CityData] = Seq.empty)(implicit ex:Executi
 
     }
     if(newCity.name == ""){
-
+      val res = CityData(name = createCity.name, temperature = api.receiveCity(createCity.name))
+       newCity = res.copy(name = res.name, temperature = res.temperature)
     }
     newCity
   }
