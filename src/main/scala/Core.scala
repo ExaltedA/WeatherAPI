@@ -1,3 +1,6 @@
+import java.util.concurrent.{ScheduledThreadPoolExecutor, TimeUnit}
+
+import KafkaProducer.putCityToKafka
 import akka.actor.typed.{ActorRef, ActorSystem, Behavior}
 import akka.actor.typed.scaladsl.Behaviors
 import org.slf4j.{Logger, LoggerFactory}
@@ -20,6 +23,18 @@ object Core extends App {
 
       Server.startHttpServer(router.route, host, port)(context.system, context.executionContext)
 
+    val scheduleTime = new ScheduledThreadPoolExecutor(1)
+    val task = new Runnable {
+      override def run(): Unit = {
+        val tempVector = HttpService.getCities(KafkaConsumer.getCitiesFromKafka)
+        println("Hello motherfucker")
+        tempVector.foreach(city => putCityToKafka(city))
+      }
+    }
+
+
+    val RequestPeriodicallyToKafka = scheduleTime.
+      scheduleAtFixedRate(task, 1, 20, TimeUnit.SECONDS)
 
 
         Behaviors.empty

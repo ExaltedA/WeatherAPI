@@ -11,18 +11,11 @@ import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
 object KafkaProducer {
-  val scheduleTime = new ScheduledThreadPoolExecutor(1)
-  val task = new Runnable {
-    override def run(): Unit = {
-      val tempVector = HttpService.getCities(KafkaConsumer.getCitiesFromKafka)
-      tempVector.foreach(city => putCityToKafka(city))
-    }
-  }
 
   def putCityToKafka(city: CityData): Unit = {
     val myCityVector: Vector[CityData] = Vector(city)
     val done2: Future[Done] =
-      Source.single(myCityVector)
+      Source.single(city)
         .map { _ =>
           ProducerMessage.single(
             new ProducerRecord[String, String]("topic_1", city.name, city.temperature)
@@ -40,7 +33,4 @@ object KafkaProducer {
 
     }
   }
-
-  val RequestPeriodicallyToKafka = scheduleTime.
-    scheduleAtFixedRate(task, 1, 20, TimeUnit.SECONDS)
 }

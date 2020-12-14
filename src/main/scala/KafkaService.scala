@@ -1,3 +1,6 @@
+import java.util.concurrent.{ScheduledThreadPoolExecutor, TimeUnit}
+
+import KafkaProducer.{putCityToKafka}
 import akka.actor.ActorSystem
 import akka.kafka.ProducerSettings
 import com.typesafe.config.Config
@@ -15,5 +18,7 @@ object KafkaService {
   val producerSettings: ProducerSettings[String, String] =
     ProducerSettings(config, new StringSerializer, new StringSerializer)
       .withBootstrapServers(server)
+
+
 
 }
