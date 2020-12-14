@@ -33,7 +33,7 @@ class OpenMap(ex:ExecutionContext) {
               val cursor: HCursor = value.hcursor
 
             val res = cursor.downField("main").get[Double]("temp").toString
-
+              res
 
           }
         case Failure(exception) => {
