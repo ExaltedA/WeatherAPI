@@ -52,10 +52,15 @@ class InMemoryCityRepository(city:Seq[CityData] = Seq.empty)(implicit ex:Executi
 
   override def select(createCity: CreateCityData): Future[CityData] = Future.successful{
     var newCity = CityData("","","")
+
     for(city <- cities){
       if(city.name == createCity.name){
         newCity = city.copy(name = createCity.name, temperature = city.temperature)//TODO: OPENMAP
       }
+
+    }
+    if(newCity.name == ""){
+
     }
     newCity
   }

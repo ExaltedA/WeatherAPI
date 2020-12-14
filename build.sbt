@@ -23,6 +23,7 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-parser" % circeVersion,
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "de.heikoseeberger" %% "akka-http-circe" % "1.31.0"
-
 )
+
+
 

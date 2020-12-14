@@ -1,36 +1,48 @@
+import akka.actor.typed.{ActorSystem, Behavior}
+import akka.actor.typed.scaladsl.Behaviors
+
+import scala.io.Source
+import scala.util.{Failure, Success, Try, Using}
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutor, Future}
+import io.circe._
+import io.circe.parser._
+import io.circe.syntax._
+import driver.system
+
+import scala.io.StdIn.readLine
+import scala.util.Try
+
+object OpenMap {
+  def apply(): Behavior[String] = Behaviors.setup { context =>
+
+    val APIkey = "8b14f6830cf4eb4ab2c5a39de27978cf"
+    var cache = Vector[CityData]
 
 
-import java.net.URLEncoder
-
-import akka.actor.TypedActor.dispatcher
-import akka.http.scaladsl.model.headers
-import akka.http.scaladsl.model.HttpMethods._
-import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{ContentTypes, HttpEntity, HttpRequest, HttpResponse, Uri}
-import akka.http.scaladsl.client.RequestBuilding.Get
-import akka.stream.scaladsl.MergeHub.source
-import akka.http.scaladsl.model.HttpProtocols._
-import akka.http.scaladsl.model.MediaTypes._
-import akka.http.scaladsl.model.HttpCharsets._
-import akka.http.scaladsl.model.HttpRequest.unapply
-import akka.http.scaladsl.model.headers.BasicHttpCredentials
-import akka.util.ByteString
-
-import scala.concurrent.Future
-import scala.concurrent.duration.DurationInt
-
-object OpenMap extends App{
-  val name = "London"
-  val APIkey = "8b14f6830cf4eb4ab2c5a39de27978cf"
-  val client = s"https://api.openweathermap.org/data/2.5/weather?q=$name&appid=$APIkey"
-  // using Eval and Id
+    Behaviors.receiveMessage { message =>
+      val city = message // May not work
+      println(city)
+      val client = s"https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$APIkey"
+      val requestBody: Try[String] = Using(Source.fromURL(client)) { source => source.mkString }
+      requestBody match {
+        case Success(requestValue) =>
+          parse(requestValue) match {
+            case Right(value) =>
+              val cursor: HCursor = value.hcursor
+              //            val baz: Decoder.Result[String] = cursor.downField("main")
+              println(cursor.downField("main").get[Double]("temp"))
+            //system.terminate()
+          }
+        case Failure(exception) => {
+          println("City name is mistyped or unavailable")
+        }
+      }
 
 
-  def get(url: String): String = scala.io.Source.fromURL(url).mkString
+      Behaviors.same
+    }
+  }
 
 
-  println(get(client))
- 
-  // using Eval and Id
- // val idWeatherInLondon: Either[WeatherError, Current] = idClient.currentByCoords(35.0f, 139.0f)
+
 }

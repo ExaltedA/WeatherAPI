@@ -13,6 +13,7 @@ object driver extends App {
       CityData("2", "Paris", "-5")
     )
 
+    val openApi= new OpenMap("")(context.executionContext)
     val cityRepository = new InMemoryCityRepository(cities)(context.executionContext)
     val router = new MyRouter(cityRepository)(context.system, context.executionContext)
 
@@ -20,6 +21,8 @@ object driver extends App {
     val port = Try(System.getenv("PORT")).map(_.toInt).getOrElse(9000)
 
     Server.startHttpServer(router.route, host, port)(context.system, context.executionContext)
+
+
     Behaviors.empty
   }
   val system = ActorSystem[Nothing](rootBehavior, "WeatherAPIServer")
