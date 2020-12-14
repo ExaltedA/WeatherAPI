@@ -22,6 +22,7 @@ class InMemoryCityRepository(api: OpenMap)(implicit ex:ExecutionContext) extends
   }*/
   override def all(): Future[Seq[CityData]] ={
     //ask for vector
+    cities = KafkaConsumer.getCitiesFromKafka
     Future.successful(cities)
   }
 
@@ -61,6 +62,7 @@ class InMemoryCityRepository(api: OpenMap)(implicit ex:ExecutionContext) extends
   override def select(createCity: CreateCityData): Future[CityData] = Future.successful{
     var newCity = CityData("","")
     //Update
+    cities = KafkaConsumer.getCitiesFromKafka
     for(city <- cities){
       if(city.name == createCity.name){
         newCity = city.copy(name = createCity.name, temperature = city.temperature)//TODO: OPENMAP
@@ -68,8 +70,15 @@ class InMemoryCityRepository(api: OpenMap)(implicit ex:ExecutionContext) extends
 
     }
     if(newCity.name == ""){
-      val res = CityData(name = createCity.name, temperature = api.receiveCity(createCity.name))
-       newCity = res.copy(name = res.name, temperature = res.temperature)
+      val out = HttpService.MakeHttpRequest(createCity.name)
+      var res = CityData("","")
+      if(out.contains("city no found") || out.contains("oops")){
+        res = CityData(name = "city not found", temperature = "")
+      }
+      else {
+        res = CityData(name = createCity.name, temperature = HttpService.MakeHttpRequest(createCity.name))
+       }
+      newCity = res.copy(name = res.name, temperature = res.temperature)
     }
     newCity
   }

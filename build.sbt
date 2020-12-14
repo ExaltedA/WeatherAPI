@@ -12,7 +12,6 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion % Test,
-  "org.scalatest" %% "scalatest" % "3.1.0" % Test
 )
 //http, streams and circe dependencies
 libraryDependencies ++= Seq(
@@ -22,7 +21,8 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic" % circeVersion,
   "io.circe" %% "circe-parser" % circeVersion,
   "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "de.heikoseeberger" %% "akka-http-circe" % "1.31.0"
+  "de.heikoseeberger" %% "akka-http-circe" % "1.31.0",
+  "com.typesafe.akka" %% "akka-stream-kafka" % "2.0.5"
 )
 
 
