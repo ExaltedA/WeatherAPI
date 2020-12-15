@@ -13,7 +13,6 @@ import scala.util.{Failure, Success}
 object KafkaProducer {
 
   def putCityToKafka(city: CityData): Unit = {
-    val myCityVector: Vector[CityData] = Vector(city)
     val done2: Future[Done] =
       Source.single(city)
         .map { _ =>

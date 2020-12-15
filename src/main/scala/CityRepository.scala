@@ -76,7 +76,7 @@ class InMemoryCityRepository(api: OpenMap)(implicit ex:ExecutionContext) extends
         res = CityData(name = "city not found", temperature = "")
       }
       else {
-        res = CityData(name = createCity.name, temperature = HttpService.MakeHttpRequest(createCity.name))
+        res = CityData(name = createCity.name, temperature = out)
        }
       newCity = res.copy(name = res.name, temperature = res.temperature)
     }

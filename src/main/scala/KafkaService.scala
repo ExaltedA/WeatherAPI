@@ -1,6 +1,3 @@
-import java.util.concurrent.{ScheduledThreadPoolExecutor, TimeUnit}
-
-import KafkaProducer.{putCityToKafka}
 import akka.actor.ActorSystem
 import akka.kafka.ProducerSettings
 import com.typesafe.config.Config

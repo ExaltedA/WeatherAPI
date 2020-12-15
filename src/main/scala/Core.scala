@@ -37,7 +37,8 @@ object Core extends App {
       scheduleAtFixedRate(task, 1, 20, TimeUnit.SECONDS)
 
 
-        Behaviors.empty
+
+    Behaviors.empty
 
         }
 

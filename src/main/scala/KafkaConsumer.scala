@@ -8,17 +8,19 @@ import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.kafka.common.TopicPartition
 import org.apache.kafka.common.serialization.StringDeserializer
 
+import scala.collection.mutable
 import scala.concurrent.Future
 
 object KafkaConsumer {
-  var myCityVector: Vector[CityData] = Vector.empty
 
+  var MapOfCities: mutable.Map[String, String] = mutable.Map.empty
   def getCitiesFromKafka:Vector[CityData] = {
+    var myCityVector: Vector[CityData] = Vector.empty
     class OffsetStore {
       private val offset = new AtomicLong
       def businessLogicAndStoreOffset(record: ConsumerRecord[String, String]): Future[Done] = {
         print(s"DB.save: ${record.value} ")
-        myCityVector :+= CityData(record.key, record.value)
+        MapOfCities += (record.key -> record.value)
         Future.successful(Done)
       }
 
@@ -44,8 +46,9 @@ object KafkaConsumer {
             new TopicPartition("topic_1", 0) -> fromOffset,
           )
         )
-        .mapAsync(1)(db.businessLogicAndStoreOffset)
+        .mapAsync(1)(db.businessLogicAndStoreOffset).run()
     }
+    MapOfCities.foreach(value => myCityVector :+= CityData(value._1, value._2))
     myCityVector
   }
 }
