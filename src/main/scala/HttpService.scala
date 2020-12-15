@@ -29,6 +29,7 @@ object HttpService {
       case Failure(_) => exceptionHttp = "city no found"
     }
     val city = CityData(cityName, cityTemperature.toString)
+    //TODO comment it to disable cashing
     KafkaProducer.putCityToKafka(city)
     if (exceptionHttp == "")
       cityTemperature.toString

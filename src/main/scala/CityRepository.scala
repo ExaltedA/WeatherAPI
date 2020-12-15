@@ -20,6 +20,7 @@ class InMemoryCityRepository()(implicit ex: ExecutionContext) extends CityReposi
 
   override def select(createCity: CreateCityData): Future[CityData] = Future.successful {
     var newCity = CityData("", "")
+    //TODO comment it to disable cashing
     cities = KafkaConsumer.getCitiesFromKafka
     for (city <- cities) {
       if (city.name == createCity.name) {

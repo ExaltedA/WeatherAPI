@@ -19,7 +19,7 @@ class MyRouter(val cityRepository: CityRepository)(implicit system: ActorSystem[
       concat(
         pathEndOrSingleSlash {
           get {
-            complete(cityRepository.all()) //TODO
+            complete(cityRepository.all())
           }
         }
       )

@@ -18,7 +18,7 @@ object Core extends App {
     val port = Try(System.getenv("PORT")).map(_.toInt).getOrElse(9000)
 
     Server.startHttpServer(router.route, host, port)(context.system, context.executionContext)
-
+    //TODO comment it to disable cashing
     val scheduleTime = new ScheduledThreadPoolExecutor(1)
     val task = new Runnable {
       override def run(): Unit = {
