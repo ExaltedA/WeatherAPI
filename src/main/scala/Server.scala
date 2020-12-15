@@ -6,8 +6,8 @@ import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
 
 object  Server {
+
   def startHttpServer(routes: Route, host: String, port: Int)(implicit system: ActorSystem[_], ex: ExecutionContext): Unit = {
-    // Akka HTTP still needs a classic ActorSystem to start
     val futureBinding = Http().newServerAt(host, port).bind(routes)
     futureBinding.onComplete {
       case Success(binding) =>

@@ -1,5 +1,4 @@
 import java.util.concurrent.atomic.AtomicLong
-
 import KafkaService.{ec, system}
 import akka.Done
 import akka.kafka.{ConsumerSettings, Subscriptions}
@@ -7,19 +6,19 @@ import akka.kafka.scaladsl.Consumer
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.kafka.common.TopicPartition
 import org.apache.kafka.common.serialization.StringDeserializer
-
 import scala.collection.mutable
 import scala.concurrent.Future
 
 object KafkaConsumer {
 
   var MapOfCities: mutable.Map[String, String] = mutable.Map.empty
-  def getCitiesFromKafka:Vector[CityData] = {
+
+  def getCitiesFromKafka: Vector[CityData] = {
     var myCityVector: Vector[CityData] = Vector.empty
     class OffsetStore {
       private val offset = new AtomicLong
+
       def businessLogicAndStoreOffset(record: ConsumerRecord[String, String]): Future[Done] = {
-        print(s"DB.save: ${record.value} ")
         MapOfCities += (record.key -> record.value)
         Future.successful(Done)
       }

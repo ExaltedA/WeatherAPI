@@ -2,7 +2,6 @@ import akka.actor.typed.ActorSystem
 import akka.actor.typed.scaladsl.Behaviors
 import io.circe._
 import io.circe.parser._
-
 import scala.concurrent.ExecutionContextExecutor
 import scala.io.Source
 import scala.util.{Failure, Success, Try, Using}
@@ -36,10 +35,10 @@ object HttpService {
     else exceptionHttp
   }
 
-  def getCities(cities: Vector[CityData]):Vector[CityData] = {
+  def getCities(cities: Vector[CityData]): Vector[CityData] = {
     var tempVector: Vector[CityData] = Vector.empty
-    for(city <- cities){
-      tempVector :+= CityData(city.name,MakeHttpRequest(city.name))
+    for (city <- cities) {
+      tempVector :+= CityData(city.name, MakeHttpRequest(city.name))
     }
     tempVector
   }

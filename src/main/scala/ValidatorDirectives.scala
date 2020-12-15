@@ -1,7 +1,5 @@
 import akka.http.scaladsl.server.{Directive0, Directives}
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport._
-//TODO do this also for OPENAPI
-
 
 trait ValidatorDirectives extends Directives {
   def validateWith[T](validator: Validator[T])(t: T): Directive0 =
